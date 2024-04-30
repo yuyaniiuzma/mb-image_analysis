@@ -1,0 +1,10 @@
+venv/
+# .v4p backup files
+*.xml
+*.png
+*.jpg
+*.csv
+
+# Dynamic plugins .dll
+bin/
+output/
