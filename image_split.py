@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 from pathlib import Path
 import pandas as pd
+from scipy.stats import skew
+from scipy.stats import kurtosis
 
 img = cv2.imread("red-rooster-cock-side-view-abstract_1284-16627.jpg")
 img = img[500:, 500:]
@@ -25,6 +27,9 @@ for i, chunk in enumerate(chunks):
     mean = chunk.mean()
     var = chunk.var()
     std = chunk.std()
-    series = pd.Series([mean, var, std], index=['mean', 'var', 'std'])
+    kurt = kurtosis(chunk.flatten())
+    skewness = skew(chunk.flatten())
+    series = pd.Series([mean, var, std, kurt, skewness], index=[
+                       'mean', 'var', 'std', 'kurt', 'skewness'])
     df = df._append([series], ignore_index=True)
 df.to_csv('output.csv')
