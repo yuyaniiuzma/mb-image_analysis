@@ -3,6 +3,7 @@ venv/
 *.xml
 *.png
 *.jpg
+*.jpeg
 *.csv
 
 # Dynamic plugins .dll
